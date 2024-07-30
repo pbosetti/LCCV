@@ -13,7 +13,7 @@ namespace lccv {
 
 class PiCamera {
 public:
-  PiCamera();
+  PiCamera(int camera = 0);
   ~PiCamera();
 
   Options *options;

@@ -5,10 +5,11 @@
 using namespace cv;
 using namespace lccv;
 
-PiCamera::PiCamera() {
+PiCamera::PiCamera(int camera) {
   app = new LibcameraApp(std::make_unique<Options>());
   options = static_cast<Options *>(app->GetOptions());
   still_flags = LibcameraApp::FLAG_STILL_NONE;
+  options->camera = camera;
   options->photo_width = 4056;
   options->photo_height = 3040;
   options->video_width = 640;
@@ -29,6 +30,7 @@ PiCamera::PiCamera() {
   framebuffer = nullptr;
   camerastarted = false;
 }
+
 
 PiCamera::~PiCamera() { delete app; }
 
