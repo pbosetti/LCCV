@@ -78,9 +78,11 @@ include_directories(include ${LIBCAMERA_INCLUDE_DIRS} ${OPENCV_INCLUDE_DIRS})
 
 add_library(lccv SHARED ${SOURCES})
 target_link_libraries(lccv pthread ${LIBCAMERA_LINK_LIBRARIES} ${OpenCV_LIBS})
+target_compile_options(lccv PUBLIC -fPIC)
 
 add_library(lccv_static STATIC ${SOURCES})
 set_target_properties(lccv_static PROPERTIES OUTPUT_NAME "lccv")
+target_compile_options(lccv_static PUBLIC -fPIC)
 target_link_libraries(lccv_static pthread 
   ${LIBCAMERA_LINK_LIBRARIES} ${OpenCV_LIBS}
 )
