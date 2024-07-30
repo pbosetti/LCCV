@@ -9,8 +9,8 @@ int main()
     lccv::PiCamera cam;
     cam.options->video_width=1024;
     cam.options->video_height=768;
-    cam.options->framerate=5;
-    cam.options->verbose=true;
+    cam.options->framerate=25;
+    cam.options->verbose=false;
     cv::namedWindow("Video",cv::WINDOW_NORMAL);
     cam.startVideo();
     int ch=0;

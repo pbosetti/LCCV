@@ -7,12 +7,14 @@
 
 #include "libcamera_app.hpp"
 #include "libcamera_app_options.hpp"
+#include <libcamera/logging.h>
 
 LibcameraApp::LibcameraApp(std::unique_ptr<Options> opts)
     : options_(std::move(opts)), controls_(controls::controls) {
   if (!options_)
     options_ = std::make_unique<Options>();
   controls_.clear();
+  libcamera::logSetTarget(options_->verbose ? libcamera::LoggingTarget::LoggingTargetNone : libcamera::LoggingTarget::LoggingTargetSyslog);
 }
 
 LibcameraApp::~LibcameraApp() {
